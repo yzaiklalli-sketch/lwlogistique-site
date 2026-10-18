@@ -904,7 +904,7 @@
 
 .form__input::placeholder,
 .form__textarea::placeholder {
-  color: oklch(from #f4f2ec l c h / 0.4);
+  color: #b8c6c2;
 }
 
 .form__input:focus-visible,
@@ -935,14 +935,45 @@
 .form__hint {
   grid-column: 1 / -1;
   font-size: var(--text-xs);
-  color: oklch(from #f4f2ec l c h / 0.55);
+  color: #c3ceca;
+}
+
+.form__trap {
+  display: none !important;
+}
+
+.form__consent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  color: #d5dfd9;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.form__consent input {
+  flex-shrink: 0;
+  margin-top: 0.25em;
+  width: 20px;
+  height: 20px;
+  accent-color: var(--color-primary);
+}
+
+.form [aria-invalid='true'] {
+  outline: 2px solid #ffb5b5;
+  outline-offset: 2px;
+}
+
+.form button:disabled {
+  opacity: 0.75;
+  cursor: wait;
 }
 
 .form__error {
   grid-column: 1 / -1;
   display: none;
   font-size: var(--text-sm);
-  color: #f5b26b;
+  color: #ffb5b5;
 }
 
 .form__error[data-visible='true'] {
@@ -961,6 +992,40 @@
 
 .form__status[data-visible='true'] {
   display: block;
+}
+
+.thanks-page {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: var(--space-8);
+}
+
+.thanks-card {
+  width: min(100%, 720px);
+  padding: clamp(24px, 6vw, 64px);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+}
+
+.thanks-card > * + * {
+  margin-top: var(--space-6);
+}
+
+.thanks-card img {
+  width: 108px;
+  height: auto;
+}
+
+.thanks-card h1 {
+  font-size: var(--text-2xl);
+  line-height: 1.1;
+}
+
+.thanks-card p,
+.thanks-card a:not(.btn) {
+  color: var(--color-text);
 }
 
 /* ---------- Footer ---------- */

@@ -1,87 +1,58 @@
-# LW Logistique — Site web officiel
+# LW Logistique : installation et formulaire de soumission
 
-Site web bilingue (français / anglais) de LW Logistique, en une seule page moderne aux couleurs de votre marque : vert forêt profond, lime électrique, typographie condensée et monogramme LW officiel.
+## Projet à mettre à jour
 
-- **Bilingue** : bouton EN / FR dans l'en-tête, tout le contenu est traduit
-- **Onze sections** : accueil, bandeau défilant, services, équipements (Flatbed & Drybox), processus, valeurs, à propos, statistiques animées, FAQ, appel à l'action, formulaire de soumission
-- **Formulaire sans base de données** : le formulaire de soumission prépare un courriel prérempli à info@lwlogistique.com dans l'application de courriel du visiteur — rien n'est stocké, aucun serveur requis
-- **Animations** : révélations au défilement, compteurs animés, ligne de route animée, bandeau défilant, parallaxe
-- **Optimisé** : balises meta et Open Graph bilingues, données structurées Schema.org (SEO), favicon, mobile d'abord
+Mettre à jour uniquement le projet Netlify **verdant-sprite-d1b9ca**, actuellement accessible à https://verdant-sprite-d1b9ca.netlify.app/. Ne pas créer un autre projet et ne pas modifier les projets CRM.
 
----
+Le domaine prévu pour ce site est **lwlogistique.ca**. Le courriel de réception souhaité est **info@lwlogistique.com**. Ce sont deux domaines distincts : ne pas modifier les DNS du .com pour installer ce formulaire.
 
-## Contenu du projet
+## Fonctionnement préparé
 
-```
-lw-logistics-site/
-├── index.html      La page du site (toutes les sections)
-├── base.css        Styles de base (accessibilité, reset)
-├── style.css       Couleurs de marque, mise en page, animations
-├── app.js          Bilingue (dictionnaire FR), formulaire, animations
-└── assets/
-    ├── logo-mark.png       Monogramme LW vert (fond clair)
-    ├── logo-mark-lime.png  Monogramme LW lime (fond sombre — utilisé dans l'en-tête et le pied de page)
-    ├── favicon.png         Icône d'onglet
-    ├── hero.png            Photo du port (accueil)
-    ├── road.png            Camion sur l'autoroute (services)
-    ├── coordination.png    Carte et boussole (4PL)
-    ├── flatbed.png         Chargement Flatbed (équipements)
-    ├── drybox.png          Remorque Drybox sur l'autoroute (équipements)
-    └── loading.png         Chargement au quai (à propos)
-```
+- Formulaire HTML `soumission-lw` avec nom, entreprise facultative, courriel, téléphone facultatif, origine, destination, équipement et détails de cargaison.
+- Consentement à l’utilisation des renseignements pour répondre à la demande.
+- Transmission HTTPS au service Netlify Forms, sans ouverture de l’application de courriel du visiteur.
+- Validation côté navigateur, champ antispam et états d’attente, de succès et d’erreur.
+- Coordonnées du visiteur envoyées une seule fois dans les champs structurés, sans copie dans un message récapitulatif.
+- Conservation des saisies à l’écran en cas d’erreur, sans stockage local dans le navigateur.
+- Confirmation de prise en charge par le service, sans prétendre que la notification a atteint la boîte courriel.
+- Sur un hébergement non configuré ou dans la prévisualisation Perplexity, l’envoi est bloqué avec les coordonnées de contact, plutôt qu’une fausse confirmation.
 
-Aucun serveur, aucune base de données, aucun logiciel à installer : le site est entièrement statique et fonctionne chez n'importe quel hébergeur.
+La réception effective à info@lwlogistique.com n’est pas établie par le seul code du site. Elle nécessite le réglage des notifications et un test réel.
 
----
+## Activation dans Netlify
 
-## Comment l'ajouter à votre projet / le mettre en ligne
+### Détecter le formulaire
 
-### Option 1 — Remplacer votre site actuel (lwlogistique.ca)
+Dans le projet **verdant-sprite-d1b9ca**, ouvrir **Forms** et activer **Enable form detection**, puis déployer les fichiers à jour. Cette activation précède le déploiement qui détectera le formulaire ([documentation Netlify](https://docs.netlify.com/manage/forms/setup/)).
 
-Votre site actuel fonctionne sous WordPress (Elementor). Pour le remplacer par celui-ci :
+En cas de déploiement manuel, décompresser l’archive et déposer le dossier contenant directement `index.html`, `merci.html`, `app.js`, `style.css`, `base.css`, `robots.txt`, `sitemap.xml` et `assets/` dans la zone de mise à jour de l’onglet **Deploys** du projet existant ([déploiement Netlify](https://docs.netlify.com/deploy/create-deploys/)).
 
-1. **Sauvegardez l'ancien site** — dans cPanel, utilisez « Sauvegarde complète » ou copiez le dossier `public_html` sur votre ordinateur.
-2. **Ouvrez le gestionnaire de fichiers** de votre hébergeur (cPanel → Gestionnaire de fichiers, ou FTP avec FileZilla).
-3. **Supprimez ou déplacez** les fichiers WordPress existants de `public_html` (index.php, wp-config.php, le dossier wp-content, etc.).
-4. **Téléversez tous les fichiers du dossier `lw-logistics-site`** directement dans `public_html` : index.html, base.css, style.css, app.js et le dossier assets complet.
-5. Vérifiez que `https://lwlogistique.ca` affiche le nouveau site. Si vous voyez encore l'ancien, videz la cache de votre navigateur.
+Confirmer ensuite que **soumission-lw** apparaît dans la liste des formulaires. Le HTML traité par Netlify ne doit plus contenir l’attribut `data-netlify="true"` sur le formulaire ; sa présence indique que l’activation ou le traitement reste à vérifier ([détection et traitement du formulaire](https://docs.netlify.com/manage/forms/setup/)).
 
-### Option 2 — Le tester d'abord sur un sous-domaine
+### Régler la notification
 
-1. Dans cPanel, créez un sous-domaine (ex. `nouveau.lwlogistique.ca`).
-2. Téléversez les fichiers dans son dossier.
-3. Une fois satisfait, déplacez-les dans `public_html` principal.
+Ouvrir **Forms > Submission notifications**, ajouter une notification par courriel pour les demandes vérifiées du formulaire **soumission-lw**, et saisir **info@lwlogistique.com** comme destinataire. Le champ HTML `name="email"` permet de répondre au visiteur. Le sujet préparé dans le HTML est « LW Logistique | Nouvelle demande de soumission » ([notifications Netlify](https://docs.netlify.com/manage/forms/notifications/)).
 
-### Option 3 — Netlify, Vercel ou Cloudflare Pages (gratuit)
+Le destinataire est un réglage du compte Netlify, pas une variable dans `app.js`. Ne pas exposer de jeton API dans les fichiers publics.
 
-1. Créez un compte sur netlify.com (ou vercel.com).
-2. Glissez-déposez le dossier `lw-logistics-site` sur la page d'accueil de Netlify.
-3. Le site est en ligne en quelques secondes sur une adresse gratuite, que vous pouvez relier à votre domaine.
+### Tester avant toute publicité
 
----
+1. Envoyer une demande clairement identifiée « TEST TECHNIQUE : NE PAS TRAITER COMME UNE SOUMISSION ».
+2. Confirmer sa présence dans les demandes vérifiées de **soumission-lw** ; vérifier aussi les indésirables dans Netlify si nécessaire.
+3. Confirmer la réception dans **info@lwlogistique.com**, y compris le dossier de courrier indésirable.
+4. Vérifier que les champs du message sont complets et non dupliqués.
+5. Vérifier que « Répondre » vise le courriel du client.
+6. Tester une adresse courriel invalide, une demande incomplète et une erreur réseau : aucun succès ne doit être annoncé.
+7. Vérifier le fonctionnement en français et en anglais sur téléphone.
 
-## Comment modifier le contenu
+Netlify peut classer certaines demandes comme indésirables ; son mécanisme de filtrage et le champ antispam sont documentés ici : https://docs.netlify.com/manage/forms/spam-filters/.
 
-| Quoi modifier | Où |
-|---|---|
-| Textes anglais | `index.html` (attributs data-i18n) |
-| Traductions françaises | `app.js` (dictionnaire `I18N.fr`) |
-| Couleurs de marque | `style.css` (variables `--color-*` en haut du fichier) |
-| Photos | Remplacez les fichiers dans `assets/` (gardez les mêmes noms) |
-| Téléphone / courriel | `index.html` (sections contact et pied de page) + courriel du formulaire dans `app.js` |
+Ne pas activer de dépenses publicitaires sur la seule base d’une confirmation visuelle dans le navigateur. La réception de la notification doit être confirmée.
 
-### Changer l'adresse courriel du formulaire
+## Prévisualisation et suivi
 
-Dans `app.js`, cherchez `info@lwlogistique.com` dans la fonction du formulaire et remplacez par votre adresse.
+Le site est statique. Ses animations, sa traduction et ses liens de contact restent indépendants de Netlify Forms. Le traitement direct des demandes nécessite Netlify.
 
-### Modifier le texte de la page d'accueil
+L’événement navigateur `lw:quote-submitted` est émis uniquement après une réponse HTTP acceptée par le service, sans données personnelles dans son contenu. Aucun identifiant Google Ads ni aucune conversion publicitaire n’a été installé dans cette version.
 
-Chaque texte visible possède une clé `data-i18n="..."` dans `index.html` (version anglaise) et la même clé dans le dictionnaire français de `app.js`. Modifiez les deux pour garder la traduction synchronisée.
-
----
-
-## Bon à savoir
-
-- **Le formulaire** n'envoie rien par lui-même : il ouvre le courriel du visiteur avec un message prérempli. C'est volontaire — aucune donnée n'est stockée et aucun serveur n'est nécessaire. Pour un vrai envoi automatique, il faudrait un service comme Formspree ou Netlify Forms.
-- **Référencement** : le titre et la description de la page changent avec la langue choisie, et les données structurées Schema.org (MovingCompany) aident Google à comprendre l'entreprise.
-- **Mises à jour faciles** : tout le contenu est dans les trois fichiers HTML/CSS/JS — aucune dépendance à maintenir.
+Un envoi accepté par le service n’est pas une preuve de délivrabilité du courriel ni de qualification commerciale de la demande.

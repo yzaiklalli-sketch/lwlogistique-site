@@ -403,30 +403,40 @@
           <div class="section-head reveal">
             <p class="section-head__kicker" data-i18n="contact.kicker">Contact</p>
             <h2 class="section-head__title" data-i18n="contact.title">Request a quote</h2>
-            <p class="section-head__lede" data-i18n="contact.lede">Tell us about your shipment and we'll come back with a plan. The form prepares a pre-filled email in your own email app — nothing is sent without you.</p>
+            <p class="section-head__lede" data-i18n="contact.lede">Tell us what needs to move, where and when. Send your request directly to our team for a Flatbed or Drybox transport quote.</p>
           </div>
 
           <div class="contact__grid">
-            <form class="form reveal" id="quote-form" novalidate>
+            <form class="form reveal" id="quote-form" name="soumission-lw" method="POST" action="/merci.html" data-netlify="true" netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="soumission-lw" />
+              <input type="hidden" name="subject" value="LW Logistique | Nouvelle demande de soumission" />
+              <input type="hidden" name="language" value="en" />
+              <p class="form__trap" aria-hidden="true">
+                <label>Leave this field empty: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+              </p>
               <div class="form__field">
                 <label class="form__label" for="f-name" data-i18n="form.name">Name</label>
-                <input class="form__input" type="text" id="f-name" name="name" autocomplete="name" data-i18n-ph="form.name.ph" placeholder="Your name" required />
+                <input class="form__input" type="text" id="f-name" name="name" autocomplete="name" maxlength="120" data-i18n-ph="form.name.ph" placeholder="Your name" required />
               </div>
               <div class="form__field">
                 <label class="form__label" for="f-company" data-i18n="form.company">Company</label>
-                <input class="form__input" type="text" id="f-company" name="company" autocomplete="organization" data-i18n-ph="form.company.ph" placeholder="Company name (optional)" />
+                <input class="form__input" type="text" id="f-company" name="company" autocomplete="organization" maxlength="180" data-i18n-ph="form.company.ph" placeholder="Company name (optional)" />
               </div>
-              <div class="form__field form__field--full">
+              <div class="form__field">
                 <label class="form__label" for="f-email" data-i18n="form.email">Email</label>
-                <input class="form__input" type="email" id="f-email" name="email" autocomplete="email" data-i18n-ph="form.email.ph" placeholder="you@company.com" required />
+                <input class="form__input" type="email" id="f-email" name="email" autocomplete="email" maxlength="254" data-i18n-ph="form.email.ph" placeholder="you@company.com" required />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="f-phone" data-i18n="form.phone">Phone (optional)</label>
+                <input class="form__input" type="tel" id="f-phone" name="phone" autocomplete="tel" maxlength="40" data-i18n-ph="form.phone.ph" placeholder="Your phone number" />
               </div>
               <div class="form__field">
                 <label class="form__label" for="f-origin" data-i18n="form.origin">Origin</label>
-                <input class="form__input" type="text" id="f-origin" name="origin" data-i18n-ph="form.origin.ph" placeholder="City of departure" required />
+                <input class="form__input" type="text" id="f-origin" name="origin" maxlength="180" data-i18n-ph="form.origin.ph" placeholder="City of departure" required />
               </div>
               <div class="form__field">
                 <label class="form__label" for="f-destination" data-i18n="form.destination">Destination</label>
-                <input class="form__input" type="text" id="f-destination" name="destination" data-i18n-ph="form.destination.ph" placeholder="City of arrival" required />
+                <input class="form__input" type="text" id="f-destination" name="destination" maxlength="180" data-i18n-ph="form.destination.ph" placeholder="City of arrival" required />
               </div>
               <div class="form__field form__field--full">
                 <label class="form__label" for="f-mode" data-i18n="form.mode">Equipment</label>
@@ -438,12 +448,16 @@
               </div>
               <div class="form__field form__field--full">
                 <label class="form__label" for="f-details" data-i18n="form.details">Shipment details</label>
-                <textarea class="form__textarea" id="f-details" name="details" data-i18n-ph="form.details.ph" placeholder="Cargo, dimensions, weight, timeline…" required></textarea>
+                <textarea class="form__textarea" id="f-details" name="details" maxlength="5000" data-i18n-ph="form.details.ph" placeholder="Cargo, dimensions, weight, timeline…" required></textarea>
               </div>
-              <p class="form__error" id="form-error" role="alert"></p>
-              <p class="form__hint" data-i18n="form.hint">This opens a pre-filled email in your email app — press send when it looks right. No data is stored on this site.</p>
-              <button class="btn btn--primary form__field--full" type="submit" style="justify-self: start" data-i18n="form.submit">Prepare quote email</button>
-              <p class="form__status" id="form-status" role="status"></p>
+              <label class="form__consent form__field--full">
+                <input type="checkbox" id="f-consent" name="consent" value="accepted" required />
+                <span data-i18n="form.consent">I agree that LW Logistique may use these details to respond to my transport request.</span>
+              </label>
+              <p class="form__error" id="form-error" role="alert" tabindex="-1"></p>
+              <p class="form__hint" data-i18n="form.hint">Your request is processed through Netlify Forms for LW Logistique. Please do not include payment details or sensitive documents.</p>
+              <button class="btn btn--primary form__field--full" type="submit" style="justify-self: start" data-i18n="form.submit">Send my quote request</button>
+              <p class="form__status" id="form-status" role="status" tabindex="-1"></p>
             </form>
 
             <aside class="contact__aside reveal">

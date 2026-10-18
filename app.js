@@ -10,7 +10,12 @@
     en: {
       'form.error.required': 'Please fill in your name, email, origin, destination and shipment details.',
       'form.error.email': 'Please enter a valid email address.',
-      'form.status': 'Your email app should have opened with a pre-filled message. If not, write to us directly at info@lwlogistique.com.',
+      'form.error.consent': 'Please agree to the use of your details so we can respond to your request.',
+      'form.error.invalid': 'Please check the highlighted fields.',
+      'form.error.setup': 'Online submission is not activated on this version. Email info@lwlogistique.com or call 450-436-0852. Your request has not been sent.',
+      'form.error.send': 'We could not confirm receipt. Your details are still here. Please retry, or email info@lwlogistique.com. Avoid resending if you already received a confirmation.',
+      'form.sending': 'Sending your request…',
+      'form.status': 'Thank you. Your request has been accepted by our form service. Our team will review your shipment details and contact you.',
     },
     fr: {
       'meta.title': 'LW Logistique — Transport international clé en main',
@@ -69,7 +74,7 @@
       'faq.a5': 'Nous répondons généralement en moins d’une heure pendant les heures ouvrables, et le plus rapidement possible en dehors.',
       'contact.kicker': 'Contact',
       'contact.title': 'Demandez une soumission',
-      'contact.lede': 'Décrivez-nous votre envoi et nous reviendrons vers vous avec un plan. Le formulaire prépare un courriel prérempli dans votre application — rien n’est envoyé sans vous.',
+      'contact.lede': 'Dites-nous quoi transporter, où et quand. Envoyez votre demande directement à notre équipe pour une soumission de transport Flatbed ou Drybox.',
       'contact.direct': 'Préférez nous joindre directement ?',
       'contact.yzaik': '(Yzaik, Président)',
       'contact.fallback': 'Nous répondons généralement en moins d’une heure pendant les heures ouvrables.',
@@ -79,6 +84,8 @@
       'form.company.ph': 'Nom de l’entreprise (facultatif)',
       'form.email': 'Courriel',
       'form.email.ph': 'vous@entreprise.com',
+      'form.phone': 'Téléphone (facultatif)',
+      'form.phone.ph': 'Votre numéro de téléphone',
       'form.origin': 'Origine',
       'form.origin.ph': 'Ville de départ',
       'form.destination': 'Destination',
@@ -89,11 +96,17 @@
       'form.mode.drybox': 'Drybox',
       'form.details': 'Détails de l’envoi',
       'form.details.ph': 'Cargaison, dimensions, poids, échéancier…',
-      'form.hint': 'Ceci ouvre un courriel prérempli dans votre application — appuyez sur envoyer quand il vous convient. Aucune donnée n’est conservée sur ce site.',
-      'form.submit': 'Préparer le courriel de soumission',
+      'form.consent': 'J’accepte que LW Logistique utilise ces renseignements pour répondre à ma demande de transport.',
+      'form.hint': 'Votre demande est traitée par Netlify Forms pour LW Logistique. N’incluez pas de données de paiement ni de documents sensibles.',
+      'form.submit': 'Envoyer ma demande de soumission',
       'form.error.required': 'Veuillez remplir votre nom, votre courriel, l’origine, la destination et les détails de l’envoi.',
       'form.error.email': 'Veuillez entrer une adresse courriel valide.',
-      'form.status': 'Votre application de courriel devrait s’ouvrir avec un message prérempli. Sinon, écrivez-nous directement à info@lwlogistique.com.',
+      'form.error.consent': 'Veuillez accepter l’utilisation de vos renseignements pour nous permettre de répondre à votre demande.',
+      'form.error.invalid': 'Veuillez vérifier les champs indiqués.',
+      'form.error.setup': 'L’envoi en ligne n’est pas activé sur cette version. Écrivez à info@lwlogistique.com ou appelez le 450-436-0852. Votre demande n’a pas été envoyée.',
+      'form.error.send': 'Nous n’avons pas pu confirmer la réception. Vos renseignements sont conservés dans le formulaire. Réessayez ou écrivez à info@lwlogistique.com. Évitez de renvoyer la demande si vous avez déjà reçu une confirmation.',
+      'form.sending': 'Envoi de votre demande…',
+      'form.status': 'Merci. Votre demande a été acceptée par notre service de formulaire. Notre équipe examinera les détails de votre envoi et communiquera avec vous.',
       'footer.brand': 'Logistique',
       'equip.kicker': 'Équipements',
       'equip.title': 'Flatbed & Drybox, en détail',
@@ -174,6 +187,7 @@
     document.querySelectorAll('.lang-toggle__btn').forEach(function (btn) {
       btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
     });
+    if (form) renderFormState();
   }
 
   snapshotEnglish();
@@ -301,69 +315,130 @@
     );
   }
 
-  /* ---------- Quote form → mailto ---------- */
+  /* ---------- Quote form → Netlify Forms ----------
+     Recipient is configured in Netlify submission notifications, never in client code.
+     Detection must be enabled and the site redeployed before this handler can send.
+  */
   var form = document.getElementById('quote-form');
   var errBox = document.getElementById('form-error');
   var statusBox = document.getElementById('form-status');
+  var submitBtn = form && form.querySelector('[type="submit"]');
+  var formState = 'idle';
+  var formErrorKey = '';
 
   function t(key) {
     return I18N[LANG][key] || I18N.en[key] || '';
   }
 
+  function renderFormState() {
+    if (!form) return;
+    form.setAttribute('aria-busy', String(formState === 'sending'));
+    submitBtn.disabled = formState === 'sending';
+    submitBtn.textContent = t(formState === 'sending' ? 'form.sending' : 'form.submit');
+    errBox.textContent = formErrorKey ? t(formErrorKey) : '';
+    errBox.dataset.visible = String(Boolean(formErrorKey));
+    statusBox.textContent = formState === 'success' ? t('form.status') : '';
+    statusBox.dataset.visible = String(formState === 'success');
+    form.elements.namedItem('language').value = LANG;
+  }
+
+  function showFormError(key, field) {
+    formState = 'error';
+    formErrorKey = key;
+    if (field) field.setAttribute('aria-invalid', 'true');
+    renderFormState();
+    if (field) field.focus();
+    else errBox.focus();
+  }
+
   if (form) {
-    form.addEventListener('submit', function (e) {
+    // Keep native HTML validation when JavaScript is unavailable.
+    form.noValidate = true;
+    form.addEventListener('input', function (event) {
+      event.target.removeAttribute('aria-invalid');
+    });
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
-      errBox.dataset.visible = 'false';
-      statusBox.dataset.visible = 'false';
+      if (formState === 'sending') return;
+      formErrorKey = '';
+      formState = 'idle';
+      form.querySelectorAll('[aria-invalid]').forEach(function (field) {
+        field.removeAttribute('aria-invalid');
+      });
+      renderFormState();
 
-      var name = form.name.value.trim();
-      var company = form.company.value.trim();
-      var email = form.email.value.trim();
-      var origin = form.origin.value.trim();
-      var destination = form.destination.value.trim();
-      var mode = form.mode.value;
-      var details = form.details.value.trim();
-
-      var missing = !name || !email || !origin || !destination || !details;
+      var requiredNames = ['name', 'email', 'origin', 'destination', 'details'];
+      var missing = requiredNames.map(function (name) {
+        return form.elements.namedItem(name);
+      }).find(function (field) { return !field.value.trim(); });
       if (missing) {
-        errBox.textContent = t('form.error.required');
-        errBox.dataset.visible = 'true';
+        showFormError('form.error.required', missing);
         return;
       }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        errBox.textContent = t('form.error.email');
-        errBox.dataset.visible = 'true';
+      var emailField = form.elements.namedItem('email');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value.trim()) ||
+          !emailField.checkValidity()) {
+        showFormError('form.error.email', emailField);
+        return;
+      }
+      var consentField = form.elements.namedItem('consent');
+      if (!consentField.checked) {
+        showFormError('form.error.consent', consentField);
+        return;
+      }
+      var invalid = Array.from(form.elements).find(function (field) {
+        return field.willValidate && !field.checkValidity();
+      });
+      if (invalid) {
+        showFormError('form.error.invalid', invalid);
         return;
       }
 
-      var subject =
-        LANG === 'fr'
-          ? 'Demande de soumission — ' + origin + ' → ' + destination
-          : 'Quote request — ' + origin + ' → ' + destination;
-
-      var lines = [
-        LANG === 'fr' ? 'Nom : ' + name : 'Name: ' + name,
-      ];
-      if (company) lines.push(LANG === 'fr' ? 'Entreprise : ' + company : 'Company: ' + company);
-      lines.push(LANG === 'fr' ? 'Courriel : ' + email : 'Email: ' + email);
-      lines.push(LANG === 'fr' ? 'Origine : ' + origin : 'Origin: ' + origin);
-      lines.push(LANG === 'fr' ? 'Destination : ' + destination : 'Destination: ' + destination);
-      if (mode) {
-        var modeLabels = { flatbed: 'Flat-Bed', drybox: 'Drybox' };
-        lines.push((LANG === 'fr' ? 'Équipement : ' : 'Equipment: ') + (modeLabels[mode] || mode));
+      // Netlify strips data-netlify during successful form detection.
+      // An unprocessed preview/static host must never report a fake success.
+      var allowedHost = /^(?:www\.)?lwlogistique\.ca$/.test(location.hostname) ||
+        location.hostname === 'verdant-sprite-d1b9ca.netlify.app';
+      if (!allowedHost || form.hasAttribute('data-netlify')) {
+        showFormError('form.error.setup');
+        return;
       }
-      lines.push('');
-      lines.push(LANG === 'fr' ? 'Détails :' : 'Details:');
-      lines.push(details);
+      if (form.elements.namedItem('bot-field').value) {
+        showFormError('form.error.send');
+        return;
+      }
 
-      var mailto =
-        'mailto:info@lwlogistique.com' +
-        '?subject=' + encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent(lines.join('\n'));
-
-      statusBox.textContent = t('form.status');
-      statusBox.dataset.visible = 'true';
-      window.location.href = mailto;
+      var payload = new URLSearchParams(new FormData(form));
+      requiredNames.forEach(function (name) {
+        payload.set(name, payload.get(name).trim());
+      });
+      formState = 'sending';
+      renderFormState();
+      var controller = new AbortController();
+      var timeout = setTimeout(function () { controller.abort(); }, 25000);
+      try {
+        var response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: payload.toString(),
+          credentials: 'same-origin',
+          signal: controller.signal
+        });
+        if (!response.ok) throw new Error('Submission was not accepted');
+        form.reset();
+        formState = 'success';
+        formErrorKey = '';
+        renderFormState();
+        statusBox.focus();
+        // PII-free hook for future conversion tracking, only after acceptance.
+        window.dispatchEvent(new CustomEvent('lw:quote-submitted', {
+          detail: { formName: 'soumission-lw' }
+        }));
+      } catch (error) {
+        showFormError('form.error.send');
+      } finally {
+        clearTimeout(timeout);
+        renderFormState();
+      }
     });
   }
 })();
