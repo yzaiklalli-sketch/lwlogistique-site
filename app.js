@@ -3,9 +3,15 @@
 (function () {
   'use strict';
 
+  document.documentElement.classList.add('js');
+
   /* ---------- i18n ---------- */
   var I18N = {
-    en: {},
+    en: {
+      'form.error.required': 'Please fill in your name, email, origin, destination and shipment details.',
+      'form.error.email': 'Please enter a valid email address.',
+      'form.status': 'Your email app should have opened with a pre-filled message. If not, write to us directly at info@lwlogistique.com.',
+    },
     fr: {
       'meta.title': 'LW Logistique — Transport international clé en main',
       'meta.desc': 'Fret routier, maritime et aérien à travers l’Amérique du Nord, coordonné de bout en bout par une seule équipe. Basés au Canada, fondés en 2025.',
