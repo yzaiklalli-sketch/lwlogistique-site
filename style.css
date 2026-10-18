@@ -29,14 +29,14 @@
   --space-24: 6rem;
   --space-32: 8rem;
 
-  /* Surfaces — warm off-white */
-  --color-bg: #f6f5f1;
-  --color-surface: #fdfcfa;
-  --color-surface-2: #ffffff;
-  --color-surface-offset: #edeae2;
-  --color-surface-offset-2: #e6e2d8;
-  --color-divider: #d9d5cb;
-  --color-border: #c9c4b7;
+  /* Surfaces — warm greige */
+  --color-bg: #e7e5dc;
+  --color-surface: #f4f2ec;
+  --color-surface-2: #faf9f5;
+  --color-surface-offset: #dcd9cd;
+  --color-surface-offset-2: #d2cebf;
+  --color-divider: #c5c1b3;
+  --color-border: #b5b0a0;
 
   /* Ink — deep green-charcoal */
   --color-text: #17211f;
@@ -104,7 +104,7 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: oklch(from #f6f5f1 l c h / 0.92);
+  background: oklch(from #e7e5dc l c h / 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.08);
 }
