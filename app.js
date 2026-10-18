@@ -25,7 +25,7 @@
       'cta.quote': 'Demander une soumission',
       'cta.services': 'Découvrir nos services',
       'hero.kicker': 'Partenaire logistique clé en main',
-      'hero.title': 'Transport international, géré de bout en bout.',
+      'hero.title': 'Transport international, <em>géré de bout en bout.</em>',
       'hero.sub': 'Envois Flatbed et Drybox à travers l’Amérique du Nord — planifiés, documentés et suivis par une seule équipe.',
       'hero.note': 'Canada · États-Unis · Local, interprovincial et transfrontalier',
       'coverage.ca': 'Tout le Canada',
@@ -106,6 +106,9 @@
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       I18N.en[el.getAttribute('data-i18n')] = el.textContent;
     });
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      I18N.en[el.getAttribute('data-i18n-html')] = el.innerHTML;
+    });
     document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
       I18N.en[el.getAttribute('data-i18n-ph')] = el.getAttribute('placeholder');
     });
@@ -120,6 +123,10 @@
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
       if (I18N[lang][key] !== undefined) el.textContent = I18N[lang][key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-html');
+      if (I18N[lang][key] !== undefined) el.innerHTML = I18N[lang][key];
     });
     document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
       var key = el.getAttribute('data-i18n-ph');
