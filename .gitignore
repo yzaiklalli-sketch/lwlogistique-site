@@ -1,0 +1,16 @@
+# Local credentials and hosting session files must never enter GitHub.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+.netlify/
+
+# Local dependencies, editor and operating-system files.
+node_modules/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log

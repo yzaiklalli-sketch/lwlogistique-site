@@ -1,0 +1,7 @@
+# Link this repository to the EXISTING Netlify project:
+# verdant-sprite-d1b9ca. Do not create or migrate the public site.
+[build]
+  publish = "."
+
+# No build command is needed: this is a static HTML/CSS/JavaScript website.
+# Keep form detection enabled and the existing email notification in Netlify.
