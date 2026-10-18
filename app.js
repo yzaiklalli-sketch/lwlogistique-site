@@ -97,6 +97,34 @@
       'form.error.email': 'Veuillez entrer une adresse courriel valide.',
       'form.status': 'Votre application de courriel devrait s’ouvrir avec un message prérempli. Sinon, écrivez-nous directement à info@lwlogistique.com.',
       'footer.brand': 'Logistique',
+      'equip.kicker': 'Équipements',
+      'equip.title': 'Flatbed & Drybox, en détail',
+      'equip.lede': 'Deux options complémentaires — nous choisissons celle qui convient à votre cargaison.',
+      'equip.fb.title': 'Flat-Bed',
+      'equip.fb.text': 'Un plateau ouvert pour les charges qui n’entrent pas dans une boîte — chargement latéral ou par le dessus, arrimage au châssis.',
+      'equip.fb.f1': 'Matériaux de construction — bois d’œuvre, acier, gypsum',
+      'equip.fb.f2': 'Machinerie et équipements lourds',
+      'equip.fb.f3': 'Manutention de charges hors normes',
+      'equip.fb.f4': 'Arrimage professionnel et bâches',
+      'equip.db.title': 'Drybox',
+      'equip.db.text': 'Une remorque scellée pour les marchandises qui doivent arriver exactement comme elles sont parties — protégées de la route et des intempéries.',
+      'equip.db.f1': 'Marchandises sur palettes et en caisses',
+      'equip.db.f2': 'Protection complète contre les intempéries',
+      'equip.db.f3': 'Sécurité de remorque scellée',
+      'equip.db.f4': 'Livraison locale et transfrontalière',
+      'values.kicker': 'Notre promesse',
+      'values.title': 'Simplicité. Transparence. Efficacité.',
+      'values.v1.title': 'Simplicité',
+      'values.v1.text': 'Un seul interlocuteur pour tout votre envoi — planification, documentation et transporteurs gérés pour vous.',
+      'values.v2.title': 'Transparence',
+      'values.v2.text': 'Communication claire et mises à jour en temps réel — vous savez toujours où se trouve votre marchandise.',
+      'values.v3.title': 'Efficacité',
+      'values.v3.text': 'Le bon équipement, la bonne route — des livraisons qui arrivent à l’heure, à chaque fois.',
+      'stat.exp': 'années d’expérience',
+      'stat.founders': 'cofondateurs',
+      'stat.founded': 'année de fondation',
+      'ctaBand.title': 'Prêt à expédier ?',
+      'ctaBand.sub': 'Parlez-nous de votre envoi — nous reviendrons avec un plan et une soumission.',
     },
   };
 
@@ -182,6 +210,88 @@
     revealEls.forEach(function (el) { io.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.dataset.visible = 'true'; });
+  }
+
+  /* ---------- Scroll progress bar ---------- */
+  var progress = document.createElement('div');
+  progress.className = 'progress';
+  progress.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(progress);
+  var progressRaf = null;
+  window.addEventListener(
+    'scroll',
+    function () {
+      if (progressRaf) return;
+      progressRaf = requestAnimationFrame(function () {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+        progressRaf = null;
+      });
+    },
+    { passive: true }
+  );
+
+  /* ---------- Staggered reveals ---------- */
+  document.querySelectorAll('.equip__grid, .values__grid, .process__grid, .services__grid').forEach(function (group) {
+    Array.from(group.children).forEach(function (child, i) {
+      child.style.transitionDelay = Math.min(i * 110, 440) + 'ms';
+    });
+  });
+
+  /* ---------- Animated counters ---------- */
+  function animateCount(el) {
+    var target = parseInt(el.dataset.count, 10);
+    if (isNaN(target)) return;
+    var dur = 1400;
+    var start = null;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      el.textContent = String(target);
+      return;
+    }
+    function frame(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = String(Math.round(target * eased));
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  var counters = document.querySelectorAll('[data-count]');
+  if ('IntersectionObserver' in window && counters.length) {
+    var cio = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            cio.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+    counters.forEach(function (el) { cio.observe(el); });
+  }
+
+  /* ---------- Hero parallax ---------- */
+  var heroImg = document.querySelector('.hero__img img');
+  if (heroImg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var parallaxRaf = null;
+    window.addEventListener(
+      'scroll',
+      function () {
+        if (parallaxRaf) return;
+        parallaxRaf = requestAnimationFrame(function () {
+          var y = window.scrollY;
+          if (y < window.innerHeight * 1.2) {
+            heroImg.style.transform = 'translateY(' + y * 0.22 + 'px) scale(1.06)';
+          }
+          parallaxRaf = null;
+        });
+      },
+      { passive: true }
+    );
   }
 
   /* ---------- Quote form → mailto ---------- */
