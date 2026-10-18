@@ -424,12 +424,8 @@
 
 @media (min-width: 900px) {
   .services__grid {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
-  .service-card--road { grid-column: span 7; }
-  .service-card--ocean { grid-column: span 5; }
-  .service-card--air { grid-column: span 5; }
-  .service-card--turnkey { grid-column: span 7; }
 }
 
 .service-card {

@@ -14,7 +14,7 @@
     },
     fr: {
       'meta.title': 'LW Logistique — Transport international clé en main',
-      'meta.desc': 'Fret routier, maritime et aérien à travers l’Amérique du Nord, coordonné de bout en bout par une seule équipe. Basés au Canada, fondés en 2025.',
+      'meta.desc': 'Fret routier Flatbed et Drybox à travers l’Amérique du Nord, coordonné de bout en bout par une seule équipe. Basés au Canada, fondés en 2025.',
       'a11y.skip': 'Aller au contenu',
       'a11y.menu': 'Menu',
       'nav.services': 'Services',
@@ -26,21 +26,17 @@
       'cta.services': 'Découvrir nos services',
       'hero.kicker': 'Partenaire logistique clé en main',
       'hero.title': 'Transport international, géré de bout en bout.',
-      'hero.sub': 'Envois routiers, maritimes et aériens à travers l’Amérique du Nord — planifiés, documentés et suivis par une seule équipe.',
+      'hero.sub': 'Envois Flatbed et Drybox à travers l’Amérique du Nord — planifiés, documentés et suivis par une seule équipe.',
       'hero.note': 'Canada · États-Unis · Local, interprovincial et transfrontalier',
       'coverage.ca': 'Tout le Canada',
       'coverage.us': 'États-Unis',
       'coverage.cross': 'Transfrontalier',
       'coverage.tracking': 'Suivi en temps réel',
       'services.kicker': 'Services',
-      'services.title': 'Le bon mode pour chaque envoi',
-      'services.lede': 'Une gamme complète de solutions de transport — avec des équipements Drybox, Flat-Bed et services spécialisés.',
+      'services.title': 'Le bon équipement pour chaque envoi',
+      'services.lede': 'Transport routier à travers l’Amérique du Nord avec équipements Flat-Bed et Drybox — coordonné de bout en bout.',
       'services.road.title': 'Transport routier',
-      'services.road.text': 'Livraison flexible et rapide partout en Amérique du Nord — idéale pour vos envois locaux ou transfrontaliers.',
-      'services.ocean.title': 'Fret maritime',
-      'services.ocean.text': 'Gestion de conteneurs complets (FCL) ou partiels (LCL) — une solution économique pour vos envois internationaux.',
-      'services.air.title': 'Fret aérien',
-      'services.air.text': 'Rapidité et efficacité pour vos envois urgents — nous sélectionnons les meilleures routes et transporteurs.',
+      'services.road.text': 'Livraison Flat-Bed et Drybox partout en Amérique du Nord — flexible, rapide, locale ou transfrontalière.',
       'services.turnkey.title': 'Logistique clé en main (4PL)',
       'services.turnkey.text': 'De la documentation au suivi en temps réel, nous coordonnons chaque étape — planification, communication et transporteurs — pour vous.',
       'process.kicker': 'Notre processus',
@@ -66,7 +62,7 @@
       'faq.q1': 'Quels territoires couvrez-vous ?',
       'faq.a1': 'Tout le Canada et les États-Unis — local, interprovincial et transfrontalier. Qu’il s’agisse d’un simple trajet ou d’une route complexe, nous identifions la meilleure solution pour livrer vos marchandises rapidement et en sécurité.',
       'faq.q2': 'Quelles solutions de transport offrez-vous ?',
-      'faq.a2': 'Transport routier, maritime et aérien, ainsi que la logistique clé en main 4PL. Nos équipements incluent Drybox, Flat-Bed et services spécialisés.',
+      'faq.a2': 'Transport routier avec équipements Flat-Bed et Drybox, ainsi que la logistique clé en main 4PL.',
       'faq.q3': 'Offrez-vous un suivi en temps réel ?',
       'faq.a3': 'Oui. Nous offrons un suivi en temps réel de vos envois, et notre équipe reste disponible à chaque étape.',
       'faq.q4': 'Avec quels types de clients travaillez-vous ?',
@@ -89,11 +85,10 @@
       'form.origin.ph': 'Ville de départ',
       'form.destination': 'Destination',
       'form.destination.ph': 'Ville d’arrivée',
-      'form.mode': 'Mode de transport',
+      'form.mode': 'Équipement',
       'form.mode.any': 'Je ne sais pas — conseillez-moi',
-      'form.mode.road': 'Routier',
-      'form.mode.ocean': 'Maritime (FCL / LCL)',
-      'form.mode.air': 'Aérien',
+      'form.mode.flatbed': 'Flat-Bed',
+      'form.mode.drybox': 'Drybox',
       'form.details': 'Détails de l’envoi',
       'form.details.ph': 'Cargaison, dimensions, poids, échéancier…',
       'form.hint': 'Ceci ouvre un courriel prérempli dans votre application — appuyez sur envoyer quand il vous convient. Aucune donnée n’est conservée sur ce site.',
@@ -230,8 +225,8 @@
       lines.push(LANG === 'fr' ? 'Origine : ' + origin : 'Origin: ' + origin);
       lines.push(LANG === 'fr' ? 'Destination : ' + destination : 'Destination: ' + destination);
       if (mode) {
-        var modeLabels = { road: 'road / routier', ocean: 'ocean / maritime', air: 'air / aérien' };
-        lines.push((LANG === 'fr' ? 'Mode : ' : 'Mode: ') + (modeLabels[mode] || mode));
+        var modeLabels = { flatbed: 'Flat-Bed', drybox: 'Drybox' };
+        lines.push((LANG === 'fr' ? 'Équipement : ' : 'Equipment: ') + (modeLabels[mode] || mode));
       }
       lines.push('');
       lines.push(LANG === 'fr' ? 'Détails :' : 'Details:');
