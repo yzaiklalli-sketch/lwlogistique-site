@@ -14,7 +14,7 @@
     },
     fr: {
       'meta.title': 'LW Logistique — Transport international clé en main',
-      'meta.desc': 'Fret routier Flatbed et Drybox à travers l’Amérique du Nord, coordonné de bout en bout par une seule équipe. Basés au Canada, fondés en 2025.',
+      'meta.desc': 'Transport routier Flatbed et Drybox clé en main au Canada et aux États-Unis — planifié, documenté et suivi en temps réel par une seule équipe. Fondé en 2025.',
       'a11y.skip': 'Aller au contenu',
       'a11y.menu': 'Menu',
       'nav.services': 'Services',
@@ -130,7 +130,11 @@
 
   function snapshotEnglish() {
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
-      I18N.en[el.getAttribute('data-i18n')] = el.textContent;
+      if (el.tagName === 'META') {
+        I18N.en[el.getAttribute('data-i18n')] = el.getAttribute('content');
+      } else {
+        I18N.en[el.getAttribute('data-i18n')] = el.textContent;
+      }
     });
     document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
       I18N.en[el.getAttribute('data-i18n-html')] = el.innerHTML;
@@ -148,7 +152,12 @@
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
-      if (I18N[lang][key] !== undefined) el.textContent = I18N[lang][key];
+      if (I18N[lang][key] === undefined) return;
+      if (el.tagName === 'META') {
+        el.setAttribute('content', I18N[lang][key]);
+      } else {
+        el.textContent = I18N[lang][key];
+      }
     });
     document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
       var key = el.getAttribute('data-i18n-html');
