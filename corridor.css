@@ -1,0 +1,31 @@
+/* Pages corridor (transport-quebec-ontario, transport-quebec-etats-unis) */
+.corridor-hero { position:relative; overflow:hidden; border-bottom:1px solid var(--color-border); }
+.corridor-hero-media { position:absolute; inset:0; }
+.corridor-hero-media img { width:100%; height:100%; object-fit:cover; opacity:.28; }
+.corridor-hero::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, var(--color-bg) 25%, oklch(from var(--color-bg) l c h / .55)); pointer-events:none; }
+.corridor-hero-inner { position:relative; z-index:1; padding-block:clamp(var(--space-16),9vw,var(--space-32)); }
+.corridor-hero h1 { font-size:clamp(2.4rem,1.3rem + 3.6vw,5rem); line-height:1.05; letter-spacing:-.03em; max-width:16ch; }
+.corridor-hero h1 span { color:var(--color-muted); }
+.corridor-lede { margin-top:var(--space-8); max-width:56ch; color:var(--color-text); font-size:var(--text-lg); line-height:1.45; }
+.corridor-actions { display:flex; flex-wrap:wrap; align-items:center; gap:var(--space-8); margin-top:var(--space-10); }
+.corridor-route { margin-top:var(--space-10); display:flex; flex-wrap:wrap; gap:var(--space-3); align-items:baseline; }
+.corridor-route strong { color:var(--color-text); font-family:var(--font-display); font-size:var(--text-lg); font-weight:500; letter-spacing:0; margin-right:var(--space-3); }
+.crumbs { margin-bottom:var(--space-8); }
+.crumbs a { color:var(--color-muted); text-decoration:underline; text-underline-offset:3px; }
+.corridor-grid { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-8); }
+.corridor-card { border:1px solid var(--color-border); background:var(--color-surface); }
+.corridor-card img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; }
+.corridor-card>div { padding:var(--space-8); }
+.corridor-card h3 { margin-top:var(--space-2); }
+.corridor-card .equipment-list { margin-bottom:0; }
+.footer-corridors a { color:var(--color-muted); text-decoration:underline; text-underline-offset:3px; }
+.footer-corridors a:hover { color:var(--color-text); }
+@media (max-width:960px) {
+  .corridor-grid { grid-template-columns:1fr; }
+}
+@media (max-width:700px) {
+  .corridor-actions { flex-direction:column; align-items:stretch; }
+  .corridor-actions .button { width:100%; }
+  .corridor-hero::after { background:oklch(from var(--color-bg) l c h / .82); }
+}
+.corridor-links { display:flex; flex-wrap:wrap; gap:0 var(--space-8); margin-top:var(--space-4); }
