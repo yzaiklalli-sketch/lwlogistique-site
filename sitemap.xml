@@ -1,40 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lwlogistique.ca/</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://lwlogistique.ca/transport-montreal/</loc>
-    <lastmod>2026-11-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://lwlogistique.ca/transport-flatbed/</loc>
-    <lastmod>2026-11-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://lwlogistique.ca/transport-drybox/</loc>
-    <lastmod>2026-11-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://lwlogistique.ca/transport-quebec-ontario/</loc>
-    <lastmod>2026-11-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://lwlogistique.ca/transport-quebec-etats-unis/</loc>
-    <lastmod>2026-11-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://lwlogistique.ca/transport-quebec-maritimes/</loc>
@@ -45,6 +15,86 @@
   <url>
     <loc>https://lwlogistique.ca/transport-quebec-ouest-canadien/</loc>
     <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lwlogistique.ca/transport-montreal/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-montreal/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/montreal-freight/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lwlogistique.ca/en/montreal-freight/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/montreal-freight/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-montreal/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lwlogistique.ca/transport-quebec-ontario/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-quebec-ontario/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/quebec-ontario-freight/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lwlogistique.ca/en/quebec-ontario-freight/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/quebec-ontario-freight/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-quebec-ontario/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lwlogistique.ca/transport-quebec-etats-unis/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-quebec-etats-unis/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/quebec-usa-freight/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lwlogistique.ca/en/quebec-usa-freight/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/quebec-usa-freight/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-quebec-etats-unis/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lwlogistique.ca/transport-flatbed/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-flatbed/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/flatbed-freight/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lwlogistique.ca/en/flatbed-freight/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/flatbed-freight/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-flatbed/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lwlogistique.ca/transport-drybox/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-drybox/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/dry-van-freight/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lwlogistique.ca/en/dry-van-freight/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/dry-van-freight/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-drybox/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
