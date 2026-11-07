@@ -1,25 +1,25 @@
 /* LW / Édition Route. User's original screenshot is the visual authority.
    Dark green, white and the untouched original logo. No fluorescent accents. */
 :root {
-  --color-bg: #011f20;
-  --color-surface: #073434;
-  --color-surface-2: #0a3d3d;
-  --color-surface-offset: #0a3a3a;
-  --color-text: #e8ece7;
-  --color-muted: #9db0ac;
+  --color-bg: #004225;
+  --color-surface: #0a4f30;
+  --color-surface-2: #0e5636;
+  --color-surface-offset: #0c5333;
+  --color-text: #f5f8f5;
+  --color-muted: #c9dbd0;
   --color-primary: #ffffff;
   --color-primary-hover: #e4e9e6;
   --color-primary-active: #ccd7d1;
-  --color-ink: #022b2c;
-  --color-border: #1d5757;
+  --color-ink: #00301b;
+  --color-border: #2f7351;
   --color-error: #ffb5b5;
   --color-logo-matte: transparent;
   --font-display: 'Clash Display', 'Arial', sans-serif;
   --font-body: 'Satoshi', 'Arial', sans-serif;
-  --text-xs: clamp(.75rem,.72rem + .13vw,.825rem);
-  --text-sm: clamp(.875rem,.84rem + .16vw,1rem);
-  --text-base: clamp(1rem,.96rem + .16vw,1.125rem);
-  --text-lg: clamp(1.25rem,1.1rem + .5vw,1.6rem);
+  --text-xs: clamp(.875rem,.85rem + .13vw,.95rem);
+  --text-sm: clamp(1rem,.96rem + .16vw,1.125rem);
+  --text-base: clamp(1.0625rem,1rem + .22vw,1.25rem);
+  --text-lg: clamp(1.35rem,1.2rem + .5vw,1.75rem);
   --text-xl: clamp(1.5rem,1.24rem + 1vw,2.25rem);
   --text-2xl: clamp(2.25rem,1.65rem + 2vw,3.75rem);
   --text-hero: clamp(3.25rem,1.4rem + 5.2vw,6.75rem);
@@ -33,7 +33,7 @@
 }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:100px; color-scheme:dark; }
-body { margin:0; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); font-size:var(--text-base); line-height:1.6; -webkit-font-smoothing:antialiased; }
+body { margin:0; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); font-size:var(--text-base); line-height:1.65; -webkit-font-smoothing:antialiased; }
 body:has(dialog[open]) { overflow:hidden; }
 button,input,select,textarea { font:inherit; }
 button,a,input,select,textarea,summary { -webkit-tap-highlight-color:transparent; }
@@ -84,7 +84,7 @@ address { font-style:normal; }
 .site-header { height:88px; position:sticky; top:0; z-index:50; background:oklch(from var(--color-bg) l c h / .96); border-bottom:1px solid var(--color-border); backdrop-filter:blur(18px); }
 .header-inner { display:flex; align-items:center; justify-content:space-between; height:100%; gap:var(--space-8); }
 .brand { display:inline-flex; align-items:center; gap:var(--space-4); flex-shrink:0; }
-.brand img { width:142px; height:60px; object-fit:contain; background:var(--color-logo-matte); }
+.brand img { width:auto; height:62px; object-fit:contain; background:var(--color-logo-matte); }
 .brand>span { font-size:var(--text-sm); letter-spacing:.18em; font-weight:700; line-height:1.2; }
 .brand-sub { display:block; margin-top:var(--space-2); color:var(--color-muted); letter-spacing:.045em; font-size:var(--text-xs); font-weight:400; }
 .desktop-nav { display:flex; gap:var(--space-8); }
@@ -118,7 +118,7 @@ h1>span { color:var(--color-primary); }
 .hero-facts>div>span:last-child { font-size:var(--text-sm); font-weight:500; }
 .video-toggle { display:flex; align-items:center; gap:var(--space-3); border:0; min-height:44px; padding:var(--space-2) 0 var(--space-2) var(--space-4); background:none; font-size:var(--text-xs); }
 .video-symbol { border:1px solid var(--color-border); display:grid; place-items:center; width:40px; height:40px; border-radius:50%; font-size:var(--text-sm); }
-.ticker { --color-primary:#022b2c; overflow:hidden; border-bottom:0; padding-block:var(--space-6); color:#022b2c; background:#f5f7f3; }
+.ticker { --color-primary:var(--color-ink); overflow:hidden; border-bottom:0; padding-block:var(--space-6); color:var(--color-ink); background:#f5f7f3; }
 .ticker-track { display:flex; width:max-content; gap:var(--space-12); align-items:center; animation:marquee 38s linear infinite; font-family:var(--font-display); font-size:var(--text-lg); letter-spacing:.05em; font-weight:500; }
 .ticker-cross { color:var(--color-primary); font-size:var(--text-lg); }
 .ticker:hover .ticker-track { animation-play-state:paused; }
@@ -144,9 +144,9 @@ h1>span { color:var(--color-primary); }
   --color-bg:#f5f7f3;
   --color-surface:#e8eeea;
   --color-surface-2:#e0e8e2;
-  --color-text:#022b2c;
+  --color-text:var(--color-ink);
   --color-muted:#46605a;
-  --color-primary:#022b2c;
+  --color-primary:var(--color-ink);
   --color-border:#bdccc4;
   --color-error:#9b2828;
   color:var(--color-text);
