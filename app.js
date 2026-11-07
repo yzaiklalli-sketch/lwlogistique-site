@@ -131,7 +131,7 @@
     ].forEach(([selector, fr, en]) => $(selector).setAttribute('aria-label', pick(fr, en)));
     $$('.brand').forEach(el => el.setAttribute('aria-label', pick('LW Logistique, accueil', 'LW Logistique, home')));
     form.elements.language.value = lang;
-    document.title = pick('LW Logistique | Flatbed & Drybox, Canada et États-Unis', 'LW Logistique | Flatbed & Drybox, Canada and United States');
+    document.title = pick('LW Logistique | Transport Canada – États-Unis : flatbed, drybox et machinerie', 'LW Logistique | Canada – USA freight: flatbed, dry van and machinery');
     summary(); renderRoute(); videoLabel(); renderJourney();
     if (busy) $('[data-submit-label]').textContent = pick('Envoi en cours…', 'Sending…');
   });
