@@ -43,3 +43,5 @@ a.language-button { display:inline-flex; align-items:center; justify-content:cen
 .site-footer .brand img { background:#ffffff; padding:10px 14px; border-radius:6px; box-sizing:content-box; }
 .micro, .eyebrow { font-weight:700; }
 .section-intro, .faq-answer, .process-item p, .cta-note { color:var(--color-muted); }
+.about-lw { margin-top:var(--space-6); font-size:var(--text-lg); line-height:1.45; color:var(--color-text); }
+.about-lw strong { font-weight:700; }

@@ -46,6 +46,7 @@
     'about.kicker': '04 / INDEPENDENT. INVOLVED.',
     'about.title': 'Rooted in Sainte-Sophie.<br>Connected to your route.',
     'about.body': 'Founded in 2026, LW Logistique is a freight brokerage led by Yzaik, its president and founder. Our approach: a direct relationship, thoughtful planning and practical support.',
+    'about.lw': 'LW stands for <strong>Let’s Win Together</strong>. When your shipment succeeds, we succeed with you.',
     'about.role': 'President and founder',
     'about.statement': 'A new company.<br>A clear idea:<br><strong>simplify your transport.</strong>',
     'faq.kicker': 'STRAIGHT ANSWERS.', 'faq.title': 'Before you<br>hit the road.',
