@@ -1,24 +1,24 @@
 /* LW / Édition Route. User's original screenshot is the visual authority.
    Dark green, white and the untouched original logo. No fluorescent accents. */
 :root {
-  --color-bg: #004225;
-  --color-surface: #0a4f30;
-  --color-surface-2: #0e5636;
-  --color-surface-offset: #0c5333;
-  --color-text: #f5f8f5;
-  --color-muted: #c9dbd0;
+  --color-bg: #0f3d2e;
+  --color-surface: #164a38;
+  --color-surface-2: #1b523f;
+  --color-surface-offset: #184e3b;
+  --color-text: #ffffff;
+  --color-muted: #e1ebe5;
   --color-primary: #ffffff;
   --color-primary-hover: #e4e9e6;
   --color-primary-active: #ccd7d1;
-  --color-ink: #00301b;
-  --color-border: #2f7351;
+  --color-ink: #0a2e22;
+  --color-border: #3d725f;
   --color-error: #ffb5b5;
   --color-logo-matte: transparent;
   --font-display: 'Clash Display', 'Arial', sans-serif;
   --font-body: 'Satoshi', 'Arial', sans-serif;
-  --text-xs: clamp(.875rem,.85rem + .13vw,.95rem);
-  --text-sm: clamp(1rem,.96rem + .16vw,1.125rem);
-  --text-base: clamp(1.0625rem,1rem + .22vw,1.25rem);
+  --text-xs: clamp(.9375rem,.9rem + .15vw,1.0625rem);
+  --text-sm: clamp(1.0625rem,1rem + .2vw,1.25rem);
+  --text-base: clamp(1.125rem,1.05rem + .25vw,1.3125rem);
   --text-lg: clamp(1.35rem,1.2rem + .5vw,1.75rem);
   --text-xl: clamp(1.5rem,1.24rem + 1vw,2.25rem);
   --text-2xl: clamp(2.25rem,1.65rem + 2vw,3.75rem);
@@ -33,7 +33,7 @@
 }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:100px; color-scheme:dark; }
-body { margin:0; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); font-size:var(--text-base); line-height:1.65; -webkit-font-smoothing:antialiased; }
+body { margin:0; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); font-size:var(--text-base); line-height:1.65; font-weight:500; -webkit-font-smoothing:antialiased; }
 body:has(dialog[open]) { overflow:hidden; }
 button,input,select,textarea { font:inherit; }
 button,a,input,select,textarea,summary { -webkit-tap-highlight-color:transparent; }

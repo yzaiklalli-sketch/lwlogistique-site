@@ -31,3 +31,15 @@
 .corridor-links { display:flex; flex-wrap:wrap; gap:0 var(--space-8); margin-top:var(--space-4); }
 a.language-button { display:inline-flex; align-items:center; justify-content:center; }
 .corridor-card-plain { display:flex; align-items:flex-end; }
+
+/* En-tête blanc avec logo British Racing Green */
+.site-header { background:#ffffff; border-bottom-color:#dfe7e2; }
+.site-header .desktop-nav a { color:#0f3d2e; font-weight:600; }
+.site-header .desktop-nav a::after { background:#0f3d2e; }
+.site-header .desktop-nav a:hover { color:#0a2e22; }
+.site-header .language-button, .site-header .menu-button { color:#0f3d2e; font-weight:700; }
+.site-header .header-quote { color:#0f3d2e; font-weight:700; }
+.site-header .header-quote>span:last-child[aria-hidden] { background:#0f3d2e; border-color:#0f3d2e; color:#ffffff; }
+.site-footer .brand img { background:#ffffff; padding:10px 14px; border-radius:6px; box-sizing:content-box; }
+.micro, .eyebrow { font-weight:700; }
+.section-intro, .faq-answer, .process-item p, .cta-note { color:var(--color-muted); }
