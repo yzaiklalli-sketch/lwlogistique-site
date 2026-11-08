@@ -5,3 +5,19 @@
 
 # No build command is needed: this is a static HTML/CSS/JavaScript website.
 # Keep form detection enabled and the existing email notification in Netlify.
+
+# Browser caching: repeat visitors don't re-download images, video, CSS and JS.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

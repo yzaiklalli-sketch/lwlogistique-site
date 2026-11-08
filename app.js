@@ -359,7 +359,8 @@
   document.addEventListener('visibilitychange', () => { if (document.hidden) video.pause(); });
   // Mobile receives the same muted, inline cinematic opening. Data-saver and
   // reduced-motion preferences always keep the static poster.
-  if (!reduced.matches && !navigator.connection?.saveData) playVideo();
+  // Autoplay only on desktop to save bandwidth; mobile keeps the poster (tap to play).
+  if (!reduced.matches && !navigator.connection?.saveData && desktop.matches) playVideo();
   if (!reduced.matches) document.documentElement.classList.add('motion-ready');
   const pointerFine = matchMedia('(hover:hover) and (pointer:fine)');
   $$('.button').forEach(button => {
