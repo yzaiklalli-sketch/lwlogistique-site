@@ -45,3 +45,15 @@ a.language-button { display:inline-flex; align-items:center; justify-content:cen
 .section-intro, .faq-answer, .process-item p, .cta-note { color:var(--color-muted); }
 .about-lw { margin-top:var(--space-6); font-size:var(--text-lg); line-height:1.45; color:var(--color-text); }
 .about-lw strong { font-weight:700; }
+
+/* Page quote form, related links and trust line */
+.page-quote .quote-card form { display:block; }
+.page-quote .contact-intro h2 span { display:block; }
+.related-links { padding-block:0 var(--space-6); }
+.related-links .micro { margin-bottom:var(--space-3); }
+.related-links .footer-corridors { font-size:var(--text-sm); line-height:2; }
+.footer-trust { flex-basis:100%; font-size:var(--text-xs); color:var(--color-muted); }
+.site-header .desktop-nav { gap:clamp(var(--space-4),1.8vw,var(--space-6)); }
+.site-header .header-quote span { white-space:nowrap; }
+@media (max-width:1260px) { .site-header .desktop-nav { gap:var(--space-4); } .site-header .desktop-nav a { font-size:var(--text-xs); } }
+@media (max-width:1140px) { .site-header .desktop-nav { display:none; } .menu-button { display:block; } }

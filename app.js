@@ -4,7 +4,7 @@
   const $$ = (s) => [...document.querySelectorAll(s)];
   const english = {
     'skip': 'Skip to content', 'brand.sub': 'TRANSPORT WITH DIRECTION',
-    'nav.equipment': 'Equipment', 'nav.approach': 'The LW approach', 'nav.coverage': 'Canada + United States', 'nav.quote': 'Get a quote', 'nav.menu': 'Menu', 'nav.close': 'Close',
+    'nav.equipment': 'Equipment', 'nav.machinery': 'Machinery', 'nav.mining': 'Urgent – Mining', 'nav.approach': 'The LW approach', 'nav.coverage': 'Canada + United States', 'nav.quote': 'Get a quote', 'nav.menu': 'Menu', 'nav.close': 'Close',
     'hero.kicker': 'ROAD TRANSPORT, RETHOUGHT.',
     'hero.title': 'Every cargo.<br><span>One mission.</span>',
     'hero.lede': 'You have the cargo.<br>We have the plan.',
@@ -89,7 +89,7 @@
     attr: el.hasAttribute('data-i18n-ph') ? 'placeholder' : el.hasAttribute('data-i18n-alt') ? 'alt' : null,
     fr: el.hasAttribute('data-i18n-ph') ? el.placeholder : el.hasAttribute('data-i18n-alt') ? el.alt : el.innerHTML
   }));
-  let lang = 'fr', step = 0, route = 0, busy = false;
+  let lang = document.documentElement.lang === 'en' ? 'en' : 'fr', step = 0, route = 0, busy = false;
   const form = $('#quote-form'), steps = $$('[data-form-step]'), tabs = $$('[data-equipment]');
   const error = $('#form-error'), status = $('#form-status');
   const pick = (fr, en) => lang === 'fr' ? fr : en;
@@ -113,29 +113,6 @@
     $('[data-video-label]').textContent = playing ? pick('Mettre en pause', 'Pause motion') : pick('Animer l’image', 'Bring it to life');
     $('.video-symbol').textContent = playing ? 'Ⅱ' : '▷';
   }
-  $('#language-toggle').addEventListener('click', () => {
-    lang = lang === 'fr' ? 'en' : 'fr';
-    document.documentElement.lang = lang;
-    translations.forEach(({ el, key, attr, fr }) => {
-      const value = lang === 'en' ? english[key] ?? fr : fr;
-      if (attr) el.setAttribute(attr, value); else el.innerHTML = value;
-    });
-    $('#language-toggle').textContent = lang === 'fr' ? 'EN' : 'FR';
-    $('#language-toggle').setAttribute('aria-label', pick('Read in English', 'Lire en français'));
-    [
-      ['.desktop-nav', 'Navigation principale', 'Main navigation'],
-      ['.equipment-tabs', 'Choisir un équipement', 'Choose equipment'],
-      ['.route-buttons', 'Exemples de trajets', 'Sample routes'],
-      ['.step-nav', 'Étapes du formulaire', 'Form steps'],
-      ['#mobile-menu', 'Menu principal', 'Main menu'],
-      ['.ticker', 'Flatbed, Drybox, Canada et États-Unis', 'Flatbed, Drybox, Canada and United States']
-    ].forEach(([selector, fr, en]) => $(selector).setAttribute('aria-label', pick(fr, en)));
-    $$('.brand').forEach(el => el.setAttribute('aria-label', pick('LW Logistique, accueil', 'LW Logistique, home')));
-    form.elements.language.value = lang;
-    document.title = pick('LW Logistique Inc. – Transport | Canada – États-Unis : flatbed, drybox et machinerie', 'LW Logistique Inc. – Transport | Canada – USA freight: flatbed, dry van and machinery');
-    summary(); renderRoute(); videoLabel(); renderJourney();
-    if (busy) $('[data-submit-label]').textContent = pick('Envoi en cours…', 'Sending…');
-  });
   function chooseEquipment(mode, focus = false) {
     $('.equipment-tabs').style.setProperty('--tab-index', mode === 'drybox' ? '1' : '0');
     tabs.forEach(t => {
