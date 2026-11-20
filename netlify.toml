@@ -25,6 +25,18 @@
 # Old addresses from the previous site (no longer existing) go to the homepage,
 # so Google replaces outdated results such as the former "Premium One" page.
 [[redirects]]
+  from = "/en-ca/*"
+  to = "/en/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/fr-ca/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/"
   status = 301
