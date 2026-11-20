@@ -141,6 +141,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://lwlogistique.ca/transport-flatbed-quebec-levis/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-flatbed-quebec-levis/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/flatbed-quebec-city-levis/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lwlogistique.ca/en/flatbed-quebec-city-levis/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/flatbed-quebec-city-levis/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-flatbed-quebec-levis/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://lwlogistique.ca/transport-lowboy-hors-normes/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-lowboy-hors-normes/"/>
