@@ -141,6 +141,38 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://lwlogistique.ca/transport-laurentides/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-laurentides/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/laurentides-freight/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lwlogistique.ca/en/laurentides-freight/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/laurentides-freight/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-laurentides/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lwlogistique.ca/transport-laval-rive-nord/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-laval-rive-nord/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/laval-north-shore-freight/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lwlogistique.ca/en/laval-north-shore-freight/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lwlogistique.ca/en/laval-north-shore-freight/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-laval-rive-nord/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://lwlogistique.ca/transport-flatbed-quebec-levis/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lwlogistique.ca/transport-flatbed-quebec-levis/"/>
